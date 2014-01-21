@@ -1,0 +1,69 @@
+---
+layout: bootstrap
+paginate_path: "blog/page:num"
+---
+
+   <div class="content" style="margin-top:50px;"> 
+    <div class="page-header"> 
+     <h1 style='color:#2196ff'>{{ site.name }}<small>--Never Give Up</small></h1> 
+    </div> 
+
+  <ul class="index">
+      {% for post in paginator.posts %}
+         <li class="l"> 
+   	<a class="title" href="{{ post.url }}"> 
+     <div class="preview">
+      <img src="{{ post.img_src }}" />
+     </div></a> 
+    <div class="r">
+     <a href="{{ post.url }}">
+      <div class="t">
+{{ post.title }}
+      </div></a>
+      <div class="w_info">
+      <i class="date" title="日期"><script type="text/javascript">var date= new Date((new Date('{{ post.date }}')).valueOf()-8*3600*1000);document.write(date.toLocaleString());</script></i>
+      </div> 
+     <div class="intro">
+     	{{ post.description }}
+     </div> 
+     <div class="s_tag"> 
+      <ul class="tag">
+      	{% for c in post.categories %}
+       <li><a>{{c}}</a></li>
+    {% endfor %} 
+      </ul> 
+     </div> 
+    </div> </li> 
+    {% endfor %} 
+    <li class='l no_border'>
+<div class="pagelistbox"><span>共 {{ paginator.total_pages }} 页/ {{ paginator.total_posts }}个结果 </span>
+	<a class="indexPage" href="/">首页 </a>
+
+{% for count in (1..paginator.total_pages) limit:8 %}
+{% if count == paginator.page %}
+<strong>{{ paginator.page }}</strong>
+{% elsif count == 1 %}
+<a href="/">{{count}}</a>
+{% else %}
+<a href="/page{{count}}">{{count}}</a>
+{% endif %}
+{% endfor %}
+{% if paginator.next_page %}
+<a class="nextPage" href="/page{{paginator.next_page}}">下页</a>
+{% else %}
+<strong>下页</strong>
+{% endif %}
+{% if paginator.total_pages == 1 %}
+<a class="endPage" href="/">末页</a>
+{% else %}
+<a class="endPage" href="/page{{paginator.total_pages}}">末页</a>
+{% endif %}
+<input type="text" class="custompage"><a class="button" onclick="var pageNum=$(this).parent().find('.custompage').val();window.location=pageNum =='1'?'/':'/page'+pageNum;">确定</a></div>
+    </li>
+</ul>
+
+
+
+</div>
+
+
