@@ -18,7 +18,7 @@ body,p,ul,li,span{ margin:0; padding:0; }
 .index li.l .t span{ float:left; display:block; height:20px; border:1px solid #d8d8d8; border-radius:4px; font-size:12px; background:#fff url(icons_home.png) no-repeat 4px -848px; color:#555; margin:-1px 10px 0 0; padding:0 8px 0 18px;}
 .index li.l .t a{ color:008aff;}
 .index li .preview{ width:180px; float:left; margin-right:15px; text-align:center; overflow:hidden;}
-.index li .preview img{ width:180px; margin:0 auto;}
+.index li .preview img{ width:180px;height:180px;margin:0 auto;}
 
 .index li .w_info{ font-family: "microsoft yahei",simhei; overflow:hidden;margin-bottom:8px;}
 .index li .w_info i{ margin:0 25px 1px 0; height:20px; line-height:20px; color: #999; min-width:40px; display: block; float: left; padding-left:14px; background:url(icons_home.png) no-repeat -100px -500px;}
