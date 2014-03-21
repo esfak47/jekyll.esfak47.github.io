@@ -6,7 +6,8 @@ h1,h2,h3,h4,h5,h6,ul,li {
 
 body {
 	font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB",Arial,sans-serif;
-	font-size: 14px
+	font-size: 14px;
+	background: url(../img/bg_body.jpg) repeat;
 }
 
 a {
