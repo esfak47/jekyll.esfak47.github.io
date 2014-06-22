@@ -45,35 +45,37 @@ function nano(template, data) {
     return (typeof v !== "undefined" && v !== null) ? v : "";
   });
 }
-var dataStr = '[ {"url":"/feeling/2014/03/20/why-we-droped-our-dream.html","title":"我们为何渐渐放弃了自己的梦想", "month":"2014年03月","date":"2014-03-20"},{"url":"/javascript/2014/01/28/canvas.html","title":"Canvas API", "month":"2014年01月","date":"2014-01-28"},{"url":"/shell/2014/01/20/unix-shell.html","title":"Unix Shell", "month":"2014年01月","date":"2014-01-20"},{"url":"/jekyll/2014/01/19/welcome-to-jekyll.html","title":"Welcome to Jekyll!", "month":"2014年01月","date":"2014-01-19"} ]',
-    data = JSON.parse(dataStr);
- var itemTemplate='<li><span>{date}</span> » <a href="{url}" target="_blank">{title}</a></li>';
+var dataStr = '[ {"url":"/feeling/2014/03/20/why-we-droped-our-dream.html","description":"人生感悟", "image":"/img/feeling.jpg" ,"title":"我们为何渐渐放弃了自己的梦想", "date":"20/03/2014"},{"url":"/javascript/2014/01/28/canvas.html","description":"Canvas基础", "image":"/img/html5.jpg" ,"title":"Canvas API", "date":"28/01/2014"},{"url":"/shell/2014/01/20/unix-shell.html","description":"Linux 脚本编写基础", "image":"/img/linux.jpg" ,"title":"Unix Shell", "date":"20/01/2014"},{"url":"/jekyll/2014/01/19/welcome-to-jekyll.html","description":"Transform your plain text into static websites and blogs.", "image":"/img/jekyll.png" ,"title":"Welcome to Jekyll!", "date":"19/01/2014"} ]',
+    data = JSON.parse(dataStr),
+    title = $.query.get("title"),
+    archieves = data.filter(function(val){return val.title.search(title)!=-1});
+    
+    //console.log(archieves);
+ var itemTemplate='<li class="l"><a class="title" href="{url}"><div class="preview"><img src="{image}"></div></a><div class="r"><a href="{url}"><div class="t">{title}</div></a>'+
+      '<div class="w_info">'+
+      '<i class="date" title="日期">{date}</i></div><div class="intro">{description}</div><div class="s_tag"><ul class="tag"><li><a>'+title+
+      '</a></li></ul></div></div> </li>';
 </script>
 <div class="content"> 
     <div class="page-header"> 
-     <h1 style='color:#2196ff'>时间轴</h1> 
+     <h1 style='color:#2196ff'>
+<script type="text/javascript">
+document.write(title);
+</script>
+     </h1> 
     </div>
     <div class="row-fluid">
   
     <div class="row">
   <div class='span8'>
-     
+     <ul class="index">
      <script type="text/javascript">
-     	for(var p in data){
+     	for(var p in archieves){
      		// console.log(p);
-     		if(p==0){
-     			document.write('<h2>'+data[p].month+'</h2>');
-     			document.write('<ul>');
-     		}else if(data[p].month != data[p-1].month){
-     			document.write('</ul>');
-     			document.write('<h2>'+data[p].month+'</h2>');
-     			document.write('<ul>');
-     		}
-     		document.write(nano(itemTemplate,data[p]));
+     		document.write(nano(itemTemplate,archieves[p]));
      	}
-     	document.write('</ul>');
      </script>
-	
+	</ul>
 
   </div>
   
@@ -100,14 +102,15 @@ var dataStr = '[ {"url":"/feeling/2014/03/20/why-we-droped-our-dream.html","titl
 </ul>
     </section>
 </aside>
-  </div>
+</div>
   
 </div> 
 
  
 
 
-</div> 
+</div>
+ 
 
    <footer> 
     <p>&copy; Powered By <a href="http://jekyllrb.com/" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll</a> and <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> </p> 

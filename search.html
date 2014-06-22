@@ -1,0 +1,55 @@
+---
+layout: bootstrap
+---
+<script type="text/javascript" src="/js/jquery.query.js"></script>
+<script type="text/javascript">
+function nano(template, data) {
+  return template.replace(/\{([\w\.]*)\}/g, function(str, key) {
+    var keys = key.split("."), v = data[keys.shift()];
+    for (var i = 0, l = keys.length; i < l; i++) v = v[keys[i]];
+    return (typeof v !== "undefined" && v !== null) ? v : "";
+  });
+}
+var dataStr = '[ {% for post in site.posts %}{% if post != site.posts.first %},{% endif %}{"url":"{{post.url}}","description":"{{ post.description }}", "image":"{{post.img_src}}" ,"title":"{{post.title}}", "date":"{{post.date | date:"%d/%m/%Y"}}"}{% endfor %} ]',
+    data = JSON.parse(dataStr),
+    title = $.query.get("title"),
+    archieves = data.filter(function(val){return val.title.search(title)!=-1});
+    
+    //console.log(archieves);
+ var itemTemplate='<li class="l"><a class="title" href="{url}"><div class="preview"><img src="{image}"></div></a><div class="r"><a href="{url}"><div class="t">{title}</div></a>'+
+      '<div class="w_info">'+
+      '<i class="date" title="日期">{date}</i></div><div class="intro">{description}</div><div class="s_tag"><ul class="tag"><li><a>'+title+
+      '</a></li></ul></div></div> </li>';
+</script>
+<div class="content"> 
+    <div class="page-header"> 
+     <h1 style='color:#2196ff'>
+<script type="text/javascript">
+document.write(title);
+</script>
+     </h1> 
+    </div>
+    <div class="row-fluid">
+  
+    <div class="row">
+  <div class='span8'>
+     <ul class="index">
+     <script type="text/javascript">
+     	for(var p in archieves){
+     		// console.log(p);
+     		document.write(nano(itemTemplate,archieves[p]));
+     	}
+     </script>
+	</ul>
+
+  </div>
+  
+  {% include aside.ext %}
+</div>
+  
+</div> 
+
+ 
+
+
+</div>

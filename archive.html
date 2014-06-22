@@ -1,18 +1,53 @@
 ---
 layout: bootstrap
 ---
+<script type="text/javascript" src="/js/jquery.query.js"></script>
+<script type="text/javascript">
+function nano(template, data) {
+  return template.replace(/\{([\w\.]*)\}/g, function(str, key) {
+    var keys = key.split("."), v = data[keys.shift()];
+    for (var i = 0, l = keys.length; i < l; i++) v = v[keys[i]];
+    return (typeof v !== "undefined" && v !== null) ? v : "";
+  });
+}
+var dataStr = '[ {% for post in site.posts %}{% if post != site.posts.first %},{% endif %}{"url":"{{post.url}}","title":"{{post.title}}", "month":"{{post.date | date:"%Y年%m月"}}","date":"{{post.date | date:"%Y-%m-%d"}}"}{% endfor %} ]',
+    data = JSON.parse(dataStr);
+ var itemTemplate='<li><span>{date}</span> » <a href="{url}" target="_blank">{title}</a></li>';
+</script>
+<div class="content"> 
+    <div class="page-header"> 
+     <h1 style='color:#2196ff'>时间轴</h1> 
+    </div>
+    <div class="row-fluid">
+  
+    <div class="row">
+  <div class='span8'>
+     
+     <script type="text/javascript">
+     	for(var p in data){
+     		// console.log(p);
+     		if(p==0){
+     			document.write('<h2>'+data[p].month+'</h2>');
+     			document.write('<ul>');
+     		}else if(data[p].month != data[p-1].month){
+     			document.write('</ul>');
+     			document.write('<h2>'+data[p].month+'</h2>');
+     			document.write('<ul>');
+     		}
+     		document.write(nano(itemTemplate,data[p]));
+     	}
+     	document.write('</ul>');
+     </script>
+	
 
-   <div class="content" style="margin-top:50px;"> 
-<!-- This loops through the paginated posts -->
-{% for post in site.posts %}
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date }}</span>
-  </p>
-  <div class="content">
-    {{ post.excerpt }}
   </div>
-{% endfor %}
+  
+  {% include aside.ext %}
+  </div>
+  
+</div> 
+
+ 
 
 
 </div>

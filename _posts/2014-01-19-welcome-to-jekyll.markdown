@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2014-01-19 22:31:00
-categories: jekyll update
+categories: jekyll
 img_src: "/img/jekyll.png"
 description: "Transform your plain text into static websites and blogs."
 ---

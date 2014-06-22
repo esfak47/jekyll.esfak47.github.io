@@ -2,7 +2,7 @@
 layout: post
 title:  "Unix Shell"
 date:   2014-01-20 22:33:00
-categories: unix shell
+categories: shell
 img_src: "/img/linux.jpg"
 description: "Linux 脚本编写基础"
 ---
