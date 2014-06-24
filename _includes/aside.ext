@@ -5,7 +5,7 @@
           <li>
 
     {% for category in site.categories %}
-    <a class="btn_w" href="/categories.html?cat={{ category | first }}/" title="{{ category | first }}">{{ category | first }} <span>({{ category | last | size }})</span></a>
+    <a class="btn_w" href="/categories.html?cat={{ category | first }}" title="{{ category | first }}">{{ category | first }} <span>({{ category | last | size }})</span></a>
     
     {% endfor %}
   </li>
