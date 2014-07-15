@@ -45,7 +45,7 @@ function nano(template, data) {
     return (typeof v !== "undefined" && v !== null) ? v : "";
   });
 }
-var dataStr = '{ "jekyll":[{"url":"/jekyll/2014/01/19/welcome-to-jekyll.html","description":"Transform your plain text into static websites and blogs.", "image":"/img/jekyll.png" ,"title":"Welcome to Jekyll!", "date":"19/01/2014"}],"shell":[{"url":"/shell/2014/01/20/unix-shell.html","description":"Linux 脚本编写基础", "image":"/img/linux.jpg" ,"title":"Unix Shell", "date":"20/01/2014"}],"javascript":[{"url":"/javascript/2014/01/28/canvas.html","description":"Canvas基础", "image":"/img/html5.jpg" ,"title":"Canvas API", "date":"28/01/2014"}],"feeling":[{"url":"/feeling/2014/03/20/why-we-droped-our-dream.html","description":"人生感悟", "image":"/img/feeling.jpg" ,"title":"我们为何渐渐放弃了自己的梦想", "date":"20/03/2014"}],"network":[{"url":"/network/2014/06/24/basic-network.html","description":"网络入门", "image":"/img/network.png" ,"title":"网络入门", "date":"24/06/2014"}],"Tcl":[{"url":"/Tcl/2014/07/14/basic-tcl-command.html","description":"Help you learning tcl quickly.", "image":"/img/tcl.jpg" ,"title":"Basic commands of Tcl", "date":"14/07/2014"}] }',
+var dataStr = '{ "jekyll":[{"url":"/jekyll/2014/01/19/welcome-to-jekyll.html","description":"Transform your plain text into static websites and blogs.", "image":"/img/jekyll.png" ,"title":"Welcome to Jekyll!", "date":"19/01/2014"}],"shell":[{"url":"/shell/2014/01/20/unix-shell.html","description":"Linux 脚本编写基础", "image":"/img/linux.jpg" ,"title":"Unix Shell", "date":"20/01/2014"}],"javascript":[{"url":"/javascript/2014/01/28/canvas.html","description":"Canvas基础", "image":"/img/html5.jpg" ,"title":"Canvas API", "date":"28/01/2014"}],"feeling":[{"url":"/feeling/2014/03/20/why-we-droped-our-dream.html","description":"人生感悟", "image":"/img/feeling.jpg" ,"title":"我们为何渐渐放弃了自己的梦想", "date":"20/03/2014"}],"network":[{"url":"/network/2014/06/24/basic-network.html","description":"网络入门", "image":"/img/network.png" ,"title":"网络入门", "date":"24/06/2014"}],"Tcl":[{"url":"/Tcl/2014/07/14/basic-tcl-command.html","description":"Help you learning tcl quickly.", "image":"/img/tcl.jpg" ,"title":"Basic commands of Tcl", "date":"14/07/2014"}],"nodejs":[{"url":"/nodejs/2014/07/15/using-nodejs-webkit.html","description":"Using nodejs to develop desktop app", "image":"/img/nodejs.jpg" ,"title":"Using nodejs to develop desktop app", "date":"15/07/2014"}] }',
     data = JSON.parse(dataStr),
     curTag = $.query.get("cat"),
     archieves = data[curTag];
@@ -100,6 +100,9 @@ document.write(curTag);
     <a class="btn_w" href="/categories.html?cat=Tcl" title="Tcl">Tcl <span>(1)</span></a>
     
     
+    <a class="btn_w" href="/categories.html?cat=nodejs" title="nodejs">nodejs <span>(1)</span></a>
+    
+    
   </li>
 </ul>
     </section>
@@ -119,7 +122,7 @@ document.write(curTag);
    </footer>
    <script type="text/javascript" src="/js/typehead.js"></script>
     <script type="text/javascript">
-      var titleString='["Basic commands of Tcl","网络入门","我们为何渐渐放弃了自己的梦想","Canvas API","Unix Shell","Welcome to Jekyll!"]',titleItems = JSON.parse(titleString);     
+      var titleString='["Using nodejs to develop desktop app","Basic commands of Tcl","网络入门","我们为何渐渐放弃了自己的梦想","Canvas API","Unix Shell","Welcome to Jekyll!"]',titleItems = JSON.parse(titleString);     
     </script> 
     <script>
 $(document).ready(function($) {

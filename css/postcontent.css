@@ -43,7 +43,7 @@ margin-bottom: 20px;
 	border-radius: 7px
 }
 
-code,pre {
+ pre code{
 	font-family: Consolas,"Courier New",Courier,FreeMono,monospace;
 	margin: 1em 0 1.5em;
 	background-color: #111
