@@ -32,7 +32,7 @@ paginate_path: "blog/page:num"
      <div class="s_tag"> 
       <ul class="tag">
         {% for c in post.categories %}
-       <li><a>{{c}}</a></li>
+       <li><a href='/categories.html?cat={{c}}'>{{c}}</a></li>
     {% endfor %} 
       </ul> 
      </div> 

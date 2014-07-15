@@ -45,7 +45,7 @@ function nano(template, data) {
     return (typeof v !== "undefined" && v !== null) ? v : "";
   });
 }
-var dataStr = '[ {"url":"/network/2014/06/24/basic-network.html","title":"网络入门", "month":"2014年06月","date":"2014-06-24"},{"url":"/feeling/2014/03/20/why-we-droped-our-dream.html","title":"我们为何渐渐放弃了自己的梦想", "month":"2014年03月","date":"2014-03-20"},{"url":"/javascript/2014/01/28/canvas.html","title":"Canvas API", "month":"2014年01月","date":"2014-01-28"},{"url":"/shell/2014/01/20/unix-shell.html","title":"Unix Shell", "month":"2014年01月","date":"2014-01-20"},{"url":"/jekyll/2014/01/19/welcome-to-jekyll.html","title":"Welcome to Jekyll!", "month":"2014年01月","date":"2014-01-19"} ]',
+var dataStr = '[ {"url":"/Tcl/2014/07/14/basic-tcl-command.html","title":"Basic commands of Tcl", "month":"2014年07月","date":"2014-07-14"},{"url":"/network/2014/06/24/basic-network.html","title":"网络入门", "month":"2014年06月","date":"2014-06-24"},{"url":"/feeling/2014/03/20/why-we-droped-our-dream.html","title":"我们为何渐渐放弃了自己的梦想", "month":"2014年03月","date":"2014-03-20"},{"url":"/javascript/2014/01/28/canvas.html","title":"Canvas API", "month":"2014年01月","date":"2014-01-28"},{"url":"/shell/2014/01/20/unix-shell.html","title":"Unix Shell", "month":"2014年01月","date":"2014-01-20"},{"url":"/jekyll/2014/01/19/welcome-to-jekyll.html","title":"Welcome to Jekyll!", "month":"2014年01月","date":"2014-01-19"} ]',
     data = JSON.parse(dataStr);
  var itemTemplate='<li><span>{date}</span> » <a href="{url}" target="_blank">{title}</a></li>';
 </script>
@@ -99,6 +99,9 @@ var dataStr = '[ {"url":"/network/2014/06/24/basic-network.html","title":"网络
     <a class="btn_w" href="/categories.html?cat=network" title="network">network <span>(1)</span></a>
     
     
+    <a class="btn_w" href="/categories.html?cat=Tcl" title="Tcl">Tcl <span>(1)</span></a>
+    
+    
   </li>
 </ul>
     </section>
@@ -117,7 +120,7 @@ var dataStr = '[ {"url":"/network/2014/06/24/basic-network.html","title":"网络
    </footer>
    <script type="text/javascript" src="/js/typehead.js"></script>
     <script type="text/javascript">
-      var titleString='["网络入门","我们为何渐渐放弃了自己的梦想","Canvas API","Unix Shell","Welcome to Jekyll!"]',titleItems = JSON.parse(titleString);     
+      var titleString='["Basic commands of Tcl","网络入门","我们为何渐渐放弃了自己的梦想","Canvas API","Unix Shell","Welcome to Jekyll!"]',titleItems = JSON.parse(titleString);     
     </script> 
     <script>
 $(document).ready(function($) {

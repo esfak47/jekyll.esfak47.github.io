@@ -1,0 +1,179 @@
+<html lang="en">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta name="uyan_auth" content="45307a8898" /> 
+  <meta http-equiv="Cache-Control" content="no-cache,no-store, must-revalidate" /> 
+  <meta http-equiv="Expires" content="0" /> 
+  <title>光光的小站</title> 
+  <meta name="author" content="" />
+  <link href="/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> 
+    <link href="/bootstrap/css/twitter.css" type="text/css" rel="stylesheet" /> 
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+    <script type="text/javascript" src="/css/prettify.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <link href="/css/main.css" rel="stylesheet" type="text/css">
+ </head> 
+ <body onload="prettyPrint()"> 
+  <div class="navbar navbar-fixed-top"> 
+   <div class="navbar-inner"> 
+    <div class="container"> 
+     <a class="brand" href="/">首页</a> 
+     <ul class="nav"> 
+      <li> <a href="/about.html">关于我</a> </li> 
+      <li> <a href="/archive.html">我的博文</a> </li> 
+     </ul> 
+     <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form class="form-search navsearch" action="/search.html" method="get">
+  <input type="text" class="input-medium search-query" autocomplete="off" name="title"data-provide="typeahead" id="title_search">
+  <button class="btn" type="submit">Search</button>
+</form>
+        </li>
+      </ul>
+    </div> 
+   </div>
+
+  </div>
+    <div class="container"> 
+     <div class="content"> 
+    <div class="page-header"> 
+     <h1 style='color:#2196ff'>Basic commands of Tcl</h1> 
+    </div> 
+
+<h2>Tcl 学习之路</h2>
+
+<h3>变量</h3>
+
+<ul>
+<li>tcl变量在初始化的时候无类型</li>
+<li>使用set xxx = xxxx进行初始化</li>
+<li>使用set xxx可以查看xxx的值</li>
+<li>使用unset将变量release掉</li>
+<li>预定义的变量包括env（系统变量）argv（脚本执行的参数）argc（脚本参数的个数）argv0执行脚本的程序名</li>
+</ul>
+
+<h3>【】的使用</h3>
+
+<ul>
+<li>【】用于将内部命令结果的返回值作为另外一个命令的参数</li>
+<li>比如 set var2 【set var】就把var的只传给了var2</li>
+</ul>
+
+<h3>“”的使用</h3>
+
+<ul>
+<li>用于把一段内容封装成string类型</li>
+<li>比如 set var &quot;multiple word&quot;</li>
+<li>可以在“”中加入【】之类进行替换</li>
+<li>比如 set b &quot;a is [set a]&quot; 会打印a is 2</li>
+<li>特殊字符如\n等同样有效</li>
+</ul>
+
+<h3>{}的使用</h3>
+
+<ul>
+<li>如果内容内部不需要对特殊字符进行处理，那么可以使用{}</li>
+<li>如set a {123\n},则不会对\n进行处理</li>
+</ul>
+
+<h3>数组</h3>
+
+<p>set earnings(January) 87966
+注意tcl中的array是基于map形式的，没有固定的元素顺序，需要顺序的话可以使用列表，这里的数组有点像java中的set，索引始终是字符串类型的，即使你使用1作为索引，他依然是将1转换成字符串</p>
+
+<h3>多维数组</h3>
+
+<ul>
+<li>可以通过多个索引实现多维数组</li>
+<li>例如set matrix（1,1）140</li>
+</ul>
+
+<h3>查询数组元素</h3>
+
+<div class="highlight"><pre><code class="tcl"><span class="k">set</span> currency<span class="k">(</span><span class="nv">Frence</span><span class="k">)</span> euro
+<span class="k">set</span> currency<span class="k">(</span><span class="nv">Britain</span><span class="k">)</span> pound
+<span class="k">set</span> currency<span class="k">(</span><span class="nv">Japan</span><span class="k">)</span> yen
+<span class="k">array</span> size currency
+<span class="c"># =&gt;3</span>
+<span class="k">array</span> names currency
+<span class="c"># =&gt; Britain Japan Frence</span>
+<span class="k">foreach</span> i <span class="k">[array</span> names currency<span class="k">]</span> <span class="k">{</span>
+    <span class="nb">puts</span> currency<span class="k">(</span><span class="nv">$i</span><span class="k">)</span>
+<span class="k">}</span>
+<span class="c"># =&gt; pound yen euro</span>
+</code></pre>
+</div>
+
+<h3>列表</h3>
+
+<div class="highlight"><pre><code class="tcl"><span class="k">set</span> a <span class="k">{</span><span class="nv">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="k">}</span>
+<span class="nb">lindex</span> <span class="nv">$a</span> <span class="mi">2</span>
+<span class="c">#=&gt; 2</span>
+<span class="k">set</span> a <span class="k">[</span><span class="nb">list</span> a b c d e f g<span class="k">]</span>
+<span class="nb">lindex</span> <span class="nv">$a</span> <span class="mi">2</span>
+<span class="c">#=&gt; b</span>
+<span class="c">#concat ?arg arg ...?</span>
+<span class="c">#使用多个arg来组成一个列表，这两个命令使用频度很高，使用也非常简单</span>
+</code></pre>
+</div>
+
+<h3>字符串操作</h3>
+
+<div class="highlight"><pre><code class="tcl"><span class="nb">string</span> length string
+<span class="c">#返回String中的字符串个数</span>
+<span class="nb">string</span> range string first last
+<span class="c">#返回string当中从first到last之间的所有子字符串</span>
+<span class="nb">string</span> match <span class="o">?-</span>nocase<span class="o">?</span> pattern string
+<span class="c">#尝试对string进行匹配，匹配成功返回1，否则返回0</span>
+<span class="nb">string</span> relace string first last <span class="err">？</span>newstring<span class="err">？</span>
+<span class="c">#尝试将frist到last中间所有字符串替换为newstring</span>
+<span class="nb">string</span> trim string
+<span class="c">#尝试删除string前后的空格</span>
+<span class="nb">string</span> compare string1 string2
+<span class="c">#尝试比较string1和string2</span>
+<span class="nb">string</span> is digit <span class="mi">1234</span>
+<span class="c">#返回1234是否为数字</span>
+</code></pre>
+</div>
+
+<h3>正则表达式</h3>
+
+<div class="highlight"><pre><code class="tcl"><span class="nv">regex</span> <span class="k">{</span><span class="o">^</span><span class="k">[</span><span class="nv">0-9</span><span class="k">]</span><span class="o">+</span><span class="err">$</span><span class="k">}</span> <span class="mi">510</span>
+<span class="c">#尝试对后面的字符串进行匹配，若匹配成功返回1，否则返回0</span>
+<span class="nv">regex</span> <span class="k">{([</span><span class="nv">0-9</span><span class="k">]</span><span class="o">+</span><span class="k">)</span> <span class="o">*</span><span class="k">([</span><span class="nv">a-z</span><span class="k">]</span><span class="o">+</span><span class="k">)}</span>
+</code></pre>
+</div>
+
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1889589"></script>
+<!-- UY END -->
+ </div>
+   
+ 
+
+   <footer> 
+    <p>&copy; Powered By <a href="http://jekyllrb.com/" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll</a> and <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> </p> 
+   </footer>
+   <script type="text/javascript" src="/js/typehead.js"></script>
+    <script type="text/javascript">
+      var titleString='["Basic commands of Tcl","网络入门","我们为何渐渐放弃了自己的梦想","Canvas API","Unix Shell","Welcome to Jekyll!"]',titleItems = JSON.parse(titleString);     
+    </script> 
+    <script>
+$(document).ready(function($) {
+   // Workaround for bug in mouse item selection
+   $.fn.typeahead.Constructor.prototype.blur = function() {
+      var that = this;
+      setTimeout(function () { that.hide() }, 250);
+   };
+ 
+   $('#title_search').typeahead({
+      source: function(query, process) {
+         return titleItems;
+      }
+   });
+})
+</script>
+  </div> 
+ </body>
+</html>
