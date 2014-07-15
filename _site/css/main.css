@@ -3,8 +3,7 @@ h1,h2,h3,h4,h5,h6,ul,li {
 }
 
 body {
-	font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB",Arial,sans-serif;
-	font-size: 14px;
+	font: 0.8125em/1.69231em "Bitter",Georgia,"Times New Roman",Times,serif
 }
 
 a {
@@ -101,7 +100,6 @@ a:focus {
 }
 
 .index li .w_info {
-	font-family: "microsoft yahei",simhei;
 	overflow: hidden;
 	margin-bottom: 8px
 }
@@ -234,7 +232,6 @@ ul.tag {
 	color: #999;
 	display: block;
 	float: left;
-	font-family: Arial,"microsoft yahei";
 	overflow: hidden
 }
 
@@ -292,7 +289,6 @@ ul.tag li a {
 	float: right;
 	line-height: 24px;
 	text-align: center;
-	font-family: Arial
 }
 
 .pagelistbox a.indexPage,.pagelistbox a.nextPage,.pagelistbox a.endPage {
@@ -335,7 +331,7 @@ ul.tag li a {
 .pagelistbox a {
 	color: #555;
 	border-radius: 5px;
-	font-family: sisum
+
 }
 
 .pagelistbox a:hover {
@@ -358,7 +354,6 @@ ul.tag li a {
 	margin-bottom: 9px!important;
 	color: #636363;
 	font-size: 14px;
-	font-family: Arial,sans-serif!important
 }
 
 .highlight {
