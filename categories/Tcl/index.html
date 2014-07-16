@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Category: Tcl | null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title">
+<meta property="og:url" content="http://yoursite.com/categories/Tcl/">
+<meta property="og:site_name">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title">
+<meta name="twitter:description">
+
+  
+    <link rel="alternative" href="/atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-basic-tcl-command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/15/basic-tcl-command/" class="article-date">
+  <time datetime="2014-07-14T22:31:00.000Z" itemprop="datePublished">Jul 15 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tcl/">Tcl</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/15/basic-tcl-command/">Basic commands of Tcl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Tcl_学习之路">Tcl 学习之路</h2>
+<h3 id="变量">变量</h3>
+<ul>
+<li>tcl变量在初始化的时候无类型</li>
+<li>使用set xxx = xxxx进行初始化</li>
+<li>使用set xxx可以查看xxx的值</li>
+<li>使用unset将变量release掉</li>
+<li>预定义的变量包括env（系统变量）argv（脚本执行的参数）argc（脚本参数的个数）argv0执行脚本的程序名</li>
+</ul>
+<h3 id="【】的使用">【】的使用</h3>
+<ul>
+<li>【】用于将内部命令结果的返回值作为另外一个命令的参数</li>
+<li>比如 set var2 【set var】就把var的只传给了var2</li>
+</ul>
+<h3 id="“”的使用">“”的使用</h3>
+<ul>
+<li>用于把一段内容封装成string类型</li>
+<li>比如 set var “multiple word”</li>
+<li>可以在“”中加入【】之类进行替换</li>
+<li>比如 set b “a is [set a]” 会打印a is 2</li>
+<li>特殊字符如\n等同样有效</li>
+</ul>
+<h3 id="{}的使用">{}的使用</h3>
+<ul>
+<li>如果内容内部不需要对特殊字符进行处理，那么可以使用{}</li>
+<li>如set a {123\n},则不会对\n进行处理</li>
+</ul>
+<h3 id="数组">数组</h3>
+<p>set earnings(January) 87966<br>注意tcl中的array是基于map形式的，没有固定的元素顺序，需要顺序的话可以使用列表，这里的数组有点像java中的set，索引始终是字符串类型的，即使你使用1作为索引，他依然是将1转换成字符串</p>
+<h3 id="多维数组">多维数组</h3>
+<ul>
+<li>可以通过多个索引实现多维数组</li>
+<li>例如set matrix（1,1）140</li>
+</ul>
+<h3 id="查询数组元素">查询数组元素</h3>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">set</span> currency(Frence) euro</div><div class="line"><span class="keyword">set</span> currency(Britain) pound</div><div class="line"><span class="keyword">set</span> currency(Japan) yen</div><div class="line">array size currency</div><div class="line"><span class="preprocessor"># =&gt;3</span></div><div class="line">array names currency</div><div class="line"><span class="preprocessor"># =&gt; Britain Japan Frence</span></div><div class="line"><span class="keyword">foreach</span> i [array names currency] {</div><div class="line">	puts currency($i)</div><div class="line">}</div><div class="line"><span class="preprocessor"># =&gt; pound yen euro</span></div></pre></td></tr></table></figure><br>###列表<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> <span class="operator">a</span> {<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>}</div><div class="line">lindex $<span class="operator">a</span> <span class="number">2</span></div><div class="line"><span class="comment">#=&gt; 2</span></div><div class="line"><span class="built_in">set</span> <span class="operator">a</span> [list <span class="operator">a</span> b c d e f g]</div><div class="line">lindex $<span class="operator">a</span> <span class="number">2</span></div><div class="line"><span class="comment">#=&gt; b</span></div><div class="line"><span class="comment">#concat ?arg arg ...?</span></div><div class="line"><span class="comment">#使用多个arg来组成一个列表，这两个命令使用频度很高，使用也非常简单</span></div></pre></td></tr></table></figure><br>###字符串操作<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">string</span> length <span class="keyword">string</span></div><div class="line"><span class="preprocessor">#返回String中的字符串个数</span></div><div class="line"><span class="keyword">string</span> range <span class="keyword">string</span> first last</div><div class="line"><span class="preprocessor">#返回string当中从first到last之间的所有子字符串</span></div><div class="line"><span class="keyword">string</span> match ?-nocase? pattern <span class="keyword">string</span></div><div class="line"><span class="preprocessor">#尝试对string进行匹配，匹配成功返回1，否则返回0</span></div><div class="line"><span class="keyword">string</span> relace <span class="keyword">string</span> first last ？newstring？</div><div class="line"><span class="preprocessor">#尝试将frist到last中间所有字符串替换为newstring</span></div><div class="line"><span class="keyword">string</span> trim <span class="keyword">string</span></div><div class="line"><span class="preprocessor">#尝试删除string前后的空格</span></div><div class="line"><span class="keyword">string</span> compare string1 string2</div><div class="line"><span class="preprocessor">#尝试比较string1和string2</span></div><div class="line"><span class="keyword">string</span> is digit <span class="number">1234</span></div><div class="line"><span class="preprocessor">#返回1234是否为数字</span></div></pre></td></tr></table></figure><br>###正则表达式<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">regex {^<span class="attr_selector">[0-9]</span>+$} 510</div><div class="line">#尝试对后面的字符串进行匹配，若匹配成功返回1，否则返回0</div><div class="line">regex {(<span class="attr_selector">[0-9]</span>+) *(<span class="attr_selector">[a-z]</span>+)}</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/07/15/basic-tcl-command/" data-id="mflip1549f18qm4v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tcl/">Tcl</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/feeling/">feeling</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01">January 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/07/16/why-we-droped-our-dream/">我们为何渐渐放弃了自己的梦想</a>
+          </li>
+        
+          <li>
+            <a href="/2014/07/16/canvas/">Canvas API</a>
+          </li>
+        
+          <li>
+            <a href="/2014/07/16/basic-network/">网络入门</a>
+          </li>
+        
+          <li>
+            <a href="/2014/07/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2014/07/16/using-nodejs-webkit/">Using nodejs to develop desktop app</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 Tony Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
